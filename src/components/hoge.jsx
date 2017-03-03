@@ -7,7 +7,7 @@ class Hoge extends Component {
 
   render() {
     return (
-      <div></div>
+      <div>hoge</div>
     )
   }
 }
