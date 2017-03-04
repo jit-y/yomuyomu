@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Hoge from './components/hoge';
+import App from './components/app';
 
-render(<Hoge />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
