@@ -23,10 +23,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader"
-      },
-      {
-        test: /\.html$/,
-        loader: "html-loader"
       }
     ]
   },
