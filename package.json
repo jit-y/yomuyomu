@@ -7,7 +7,7 @@
     "start": "electron .",
     "build": "rm -rf ./dist && webpack && npm run compile",
     "s": "webpack-dev-server",
-    "compile": "gulp compile-html && gulp compile-js",
+    "compile": "gulp compile-html && gulp compile-js && gulp compile-css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -29,7 +29,7 @@
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }

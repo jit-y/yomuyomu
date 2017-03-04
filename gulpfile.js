@@ -12,3 +12,14 @@ gulp.task('compile-js', () => {
     .src('dist/**/*.js')
     .pipe(gulp.dest('app'))
 })
+
+gulp.task('compile-css', () => {
+  return gulp
+    .src('src/**/*.scss')
+    .pipe(sass({
+      includePaths: [
+        "./node_modules/bootstrap-sass/assets/stylesheets"
+      ]}
+    ).on('error', sass.logError))
+    .pipe(gulp.dest('app'))
+})
