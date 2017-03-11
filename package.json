@@ -5,7 +5,7 @@
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "build": "rm -rf ./app && webpack && npm run compile",
+    "build": "rm -rf ./app && webpack",
     "s": "webpack-dev-server",
     "compile": "gulp compile-html",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,8 +20,8 @@
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.26.2",
     "electron": "^1.6.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
-    "gulp": "^3.9.1",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.2",
     "scss-loader": "^0.0.1",

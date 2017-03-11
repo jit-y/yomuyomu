@@ -1,6 +1,7 @@
 'use strict';
 const webpack = require('webpack');
 const { resolve } = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   target: "electron",
@@ -9,38 +10,55 @@ module.exports = {
     __filename: false,
     __dirname: false
   },
-  entry: {
-    "main.js": "./main.js",
-    "index.js": "./index.js",
-    "index.css": "./index.scss"
-  },
+  entry: [
+    "./main.js",
+    "./index.js",
+    "./index.scss",
+    "./index.html"
+  ],
   output: {
     path: resolve(__dirname, "app"),
-    filename: "[name]",
+    filename: "index.js",
     publicPath: "http://localhost:8080/assets/"
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /main\.js/
+        ],
         loader: "babel-loader"
       },
       {
+        test: /main\.js/,
+        use: "file-loader?name=[name].[ext]"
+      },
+      {
         test: /\.scss$/,
-        use: [
-          {loader: "style-loader"},
-          {loader: "css-loader"},
-          {loader: "sass-loader"}
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            "css-loader",
+            "sass-loader"
+          ]
+        })
       },
       {
         test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
         loader: "file-loader"
+      },
+      {
+        test: /\.html$/,
+        loader: "file-loader?name=[name].[ext]"
       }
     ]
   },
   resolve: {
     extensions: [".js", ".jsx"]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin("index.css")
+  ]
 }
